@@ -22,5 +22,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    isAuth() {
+      return this.$store.getters["admin/isAuth"];
+    }
+  },
+  methods: {
+    logoutUser() {
+      this.$store.commit("admin/logoutUser");
+    }
+  }
+};
 </script>
