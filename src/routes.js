@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "./Store/store";
@@ -10,10 +11,33 @@ Vue.use(VueRouter);
 
 const authGuard = {
   beforeEnter: (to, from, next) => {
-    if (store.state.admin.token) {
-      next();
+    const redirect = () => {
+      if (store.state.admin.token) {
+        if (to.path === "/signin") {
+          //signin await
+          next("/dashboard");
+        } else {
+          next();
+        }
+      } else {
+        if (to.path === "/signin") {
+          next();
+        } else {
+          next("/");
+        }
+      }
+    };
+
+    if (store.state.admin.refreshLoading) {
+      //watch and wait for the token to be loaded and then direct!
+      store.watch(
+        (state, getters) => getters["admin/refreshLoading"],
+        () => {
+          redirect();
+        }
+      );
     } else {
-      next("/");
+      redirect();
     }
   }
 };
@@ -22,7 +46,8 @@ const routes = [
   { path: "/", component: Home },
   {
     path: "/signin",
-    component: Signin
+    component: Signin,
+    ...authGuard
   },
   {
     path: "/dashboard",
