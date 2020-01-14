@@ -4,6 +4,7 @@ import VueResource from "vue-resource";
 import router from "./routes";
 import store from "./Store/store";
 import vuelidate from "vuelidate";
+import wysiwyg from "vue-wysiwyg";
 
 import { MdCard } from "vue-material/dist/components";
 import "vue-material/dist/vue-material.min.css";
@@ -16,6 +17,7 @@ Vue.use(VueResource);
 Vue.http.options.root = "";
 
 Vue.use(vuelidate);
+Vue.use(wysiwyg, {});
 
 new Vue({
   router,
