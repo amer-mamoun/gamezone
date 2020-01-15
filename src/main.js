@@ -6,15 +6,23 @@ import store from "./Store/store";
 import vuelidate from "vuelidate";
 import wysiwyg from "vue-wysiwyg";
 
-import { MdCard } from "vue-material/dist/components";
+import {
+  MdCard,
+  MdButton,
+  MdDialog,
+  MdContent
+} from "vue-material/dist/components";
 import "vue-material/dist/vue-material.min.css";
 
 import Button from "./components/UI/button.vue";
 Vue.component("app-button", Button);
 Vue.use(MdCard);
+Vue.use(MdButton);
+Vue.use(MdDialog);
+Vue.use(MdContent);
 
 Vue.use(VueResource);
-Vue.http.options.root = "";
+Vue.http.options.root = "https://gamezone-bc553.firebaseio.com/";
 
 Vue.use(vuelidate);
 Vue.use(wysiwyg, {});

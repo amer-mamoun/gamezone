@@ -51,6 +51,21 @@
 
       <button type="submit">Add post</button>
     </form>
+
+    <md-dialog :md-active="dialog">
+      <p>Your post has no content, are you sure you want to post this?</p>
+      <md-dialog-actions>
+        <md-button class="md-primary" @click="dialogOnCancel"
+          >Oops, I want to add it</md-button
+        >
+        <md-button class="md-primary" @click="dialogOnConfirm"
+          >Yes, I am sure</md-button
+        >
+      </md-dialog-actions>
+    </md-dialog>
+    <div v-if="addpost" class="post_succesfull">
+      Your post was posted succesfully
+    </div>
   </div>
 </template>
 
@@ -65,7 +80,8 @@ export default {
         desc: "",
         content: "",
         rating: ""
-      }
+      },
+      dialog: false
     };
   },
   validations: {
@@ -75,15 +91,54 @@ export default {
       },
       desc: {
         required,
-        maxLength: maxLength(5)
+        maxLength: maxLength(100)
       },
       rating: {
         required
       }
     }
   },
+  computed: {
+    addpost() {
+      let status = this.$store.getters["admin/addPostStatus"];
+      if (status) {
+        this.clearPost();
+      }
+      return status;
+    }
+  },
   methods: {
-    submitHandler() {}
+    submitHandler() {
+      if (!this.$v.$invalid) {
+        if (this.formdata.content === "") {
+          //empty => show dialog
+          this.dialog = true;
+        } else {
+          this.addPost();
+        }
+      } else {
+        alert("something is wrong!");
+      }
+    },
+    addPost() {
+      this.$store.dispatch("admin/addPost", this.formdata);
+    },
+    dialogOnCancel() {
+      this.dialog = false;
+    },
+    dialogOnConfirm() {
+      this.dialog = false;
+      this.addPost();
+    },
+    clearPost() {
+      this.$v.$reset();
+      this.formdata = {
+        title: "",
+        desc: "",
+        content: "",
+        rating: ""
+      };
+    }
   }
 };
 </script>
