@@ -2,6 +2,14 @@
   <div class="dashboard_form">
     <h1>Add Posts</h1>
     <form action="" @submit.prevent="submitHandler">
+      <div v-if="imageUpload">
+        <img :src="imageUpload" />
+      </div>
+
+      <div class="input_field">
+        <input type="file" @change="processFile($event)" ref="myFileInput" />
+      </div>
+
       <div class="input_field" :class="{ invalid: $v.formdata.title.$error }">
         <label>Title</label>
         <input
@@ -76,6 +84,7 @@ export default {
   data() {
     return {
       formdata: {
+        img: "",
         title: "",
         desc: "",
         content: "",
@@ -103,8 +112,15 @@ export default {
       let status = this.$store.getters["admin/addPostStatus"];
       if (status) {
         this.clearPost();
+        this.$store.commit("admin/clearImageUpload");
       }
       return status;
+    },
+    imageUpload() {
+      let imageUrl = this.$store.getters["admin/imageUpload"];
+      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+      this.formdata.img = imageUrl;
+      return imageUrl;
     }
   },
   methods: {
@@ -132,13 +148,23 @@ export default {
     },
     clearPost() {
       this.$v.$reset();
+      this.$refs.myFileInput.value = "";
       this.formdata = {
+        img: "",
         title: "",
         desc: "",
         content: "",
         rating: ""
       };
+    },
+    processFile(event) {
+      let file = event.target.files[0];
+      this.$store.dispatch("admin/imageUpload", file);
     }
+  },
+  destroyed() {
+    //life cycle method for the picture
+    this.$store.commit("admin/clearImageUpload");
   }
 };
 </script>

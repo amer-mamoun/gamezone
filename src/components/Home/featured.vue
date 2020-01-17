@@ -31,6 +31,7 @@ import SlideOne from "../../assets/images/featured/1.jpg";
 import SlideTwo from "../../assets/images/featured/2.jpg";
 import SlideThree from "../../assets/images/featured/3.jpg";
 import SlideFour from "../../assets/images/featured/4.jpg";
+import Slidefive from "../../assets/images/featured/5.jpg";
 
 export default {
   data() {
@@ -51,6 +52,10 @@ export default {
         {
           title: "Spider-man",
           bck: SlideFour
+        },
+        {
+          title: "Hitman",
+          bck: Slidefive
         }
       ]
     };

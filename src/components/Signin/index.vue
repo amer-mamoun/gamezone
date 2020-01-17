@@ -63,8 +63,8 @@ export default {
     return {
       error: false,
       formdata: {
-        email: "amer@gmail.com",
-        password: "123456"
+        email: "",
+        password: ""
       }
     };
   },
