@@ -10,7 +10,9 @@ import {
   MdCard,
   MdButton,
   MdDialog,
-  MdContent
+  MdContent,
+  MdTable,
+  MdDialogConfirm
 } from "vue-material/dist/components";
 import "vue-material/dist/vue-material.min.css";
 
@@ -20,6 +22,8 @@ Vue.use(MdCard);
 Vue.use(MdButton);
 Vue.use(MdDialog);
 Vue.use(MdContent);
+Vue.use(MdTable);
+Vue.use(MdDialogConfirm);
 
 Vue.use(VueResource);
 Vue.http.options.root = "https://gamezone-bc553.firebaseio.com/";
