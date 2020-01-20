@@ -6,13 +6,13 @@
           <div class="gradient">
             <div class="container">
               <div class="content">
-                <app-button
+                <!--<app-button
                   type="link"
-                  linkTo="#"
-                  :addClass="['hello', 'there']"
+                  linkto="#"
+                  :addclass="['hello', 'there']"
                 >
-                  See review
-                </app-button>
+                  see review
+                </app-button> -->
                 <div class="item">
                   {{ slide.title }}
                 </div>
@@ -38,23 +38,23 @@ export default {
     return {
       slides: [
         {
-          title: "Red dead redemption 2",
+          title: "Hitman",
           bck: SlideOne
         },
         {
-          title: "Watchdogs 2",
+          title: "Call of duty",
           bck: SlideTwo
         },
         {
-          title: "Rise of the tomb rider",
+          title: "Forza Horizon 5",
           bck: SlideThree
         },
         {
-          title: "Spider-man",
+          title: "Assassince greed III",
           bck: SlideFour
         },
         {
-          title: "Hitman",
+          title: "Grand theft auto V",
           bck: Slidefive
         }
       ]
