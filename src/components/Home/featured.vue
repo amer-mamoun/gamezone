@@ -6,13 +6,6 @@
           <div class="gradient">
             <div class="container">
               <div class="content">
-                <!--<app-button
-                  type="link"
-                  linkto="#"
-                  :addclass="['hello', 'there']"
-                >
-                  see review
-                </app-button> -->
                 <div class="item">
                   {{ slide.title }}
                 </div>
