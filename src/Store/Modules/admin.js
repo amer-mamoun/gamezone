@@ -1,7 +1,6 @@
 /* eslint-disable */
 import Vue from "vue";
 import router from "../../routes";
-import posts from "./posts";
 
 const FbAuth = "https://identitytoolkit.googleapis.com/v1";
 const FbApiKey = "AIzaSyDzPVoywvIoFgd0e3Ze6v3JoOiq_RDTI0M";

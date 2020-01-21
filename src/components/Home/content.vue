@@ -34,8 +34,6 @@
 </template>
 
 <script>
-//import posts from '../../assets/posts.js';
-
 export default {
   computed: {
     posts() {
