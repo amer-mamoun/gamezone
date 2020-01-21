@@ -1,6 +1,6 @@
 <template>
   <div>
-    <carousel :per-page="1" :mouse-drag="true" :paginationEnabled="false">
+    <carousel :per-page="1" :mouse-drag="true" :paginationEnabled="true">
       <slide v-for="(slide, index) in slides" :key="index">
         <div class="slider_bck" :style="{ background: `url(${slide.bck})` }">
           <div class="gradient">
